@@ -1,28 +1,29 @@
-# C++ Mastery
+# LeetCode Practice (C++)
 
-My personal repository for practicing Object-Oriented Programming (OOP) and solving LeetCode problems in C++. I am using this space to track my coding progress, learn algorithm optimization, and keep my solutions structured.
+This is my personal repository where I am practicing C++ and solving LeetCode problems. I use this space to track my progress, learn how to write cleaner code, and understand basic runtime differences.
 
 ## Repository Contents
 
-* **`01 OOP/`** - Code files focused on learning core Object-Oriented Programming concepts.
-* **`02 Leetcode solution/`** - Solved coding challenges, grouped by problem names.
-  * **`two-sum/`** - Solutions for LeetCode #1 (Two Sum).
-    * `twoSum_naive.cpp` - My initial brute-force approach using nested loops.
-    * `twoSum_Optimized.cpp` - Optimized pass using a hash map for faster execution.
+* **01 OOP/** - Basic practice files for Object-Oriented Programming concepts.
+* **02 Leetcode solution/** - Solutions to coding problems, organized by name.
+  * **two-sum/**
+    * `twoSum_naive.cpp` - Brute-force approach using nested loops.
+    * `twoSum_Optimized.cpp` - Faster approach using a hash map.
+  * **roman-to-integer/**
+    * `rooman-integer-naive.cpp` - Solution using a hash map (`std::unordered_map`).
+    * `rooman-integer-optimized.cpp` - Faster solution using a `switch` statement instead of a map.
 
-##  What I Learned (Two Sum Breakdown)
+## Notes on What I Learned
 
-### Naive Approach
-* **How it works:** I used a nested `for` loop to check every number pair against the target.
-* **Time Complexity:** $O(n^2)$ — Sluggish for large datasets because it checks combinations repeatedly.
-* **Space Complexity:** $O(1)$ — Highly memory efficient since it doesn't use extra data structures.
+### 1. Two Sum
+* **First Attempt (Nested Loops):** I used two loops to check every possible pair. It works but it is slow because it checks things multiple times ($O(n^2)$ time).
+* **Second Attempt (Hash Map):** I used a map to look up numbers instantly. It runs much faster ($O(n)$ time) but uses a bit more memory ($O(n)$ space) to store the map.
 
-### Optimized Approach
-* **How it works:** I used an `std::unordered_map` to store elements as I iterate. It looks up the required complement instantly.
-* **Time Complexity:** $O(n)$ — Runs much faster because it solves the problem in a single pass.
-* **Space Complexity:** $O(n)$ — Uses more memory to maintain the hash map data structure.
+### 2. Roman to Integer
+* **First Attempt (Hash Map):** I used a hash map to match Roman symbols with numbers. It is clean to read, but creating and looking up values in the map adds a little bit of slowdown in practice.
+* **Second Attempt (Switch Case):** I replaced the hash map with a standard `switch` statement. It does the same linear scan ($O(n)$ time), but it runs noticeably faster because `switch` statements have less overhead than map lookups.
 
-## 🛠️ My Setup
+## My Setup
 * **Language:** C++
 * **IDE:** Visual Studio Code
-* **Environment:** Windows (PowerShell & Git)
+* **OS:** Windows (PowerShell & Git)

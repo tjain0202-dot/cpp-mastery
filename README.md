@@ -1,4 +1,4 @@
-<!-- *Note: The code logic and problem-solving implementations in this repository are entirely written by me. I use AI tools to help structure, format, and polish my README documentation and the explanatory comments inside the code files.*
+*Note: The code logic and problem-solving implementations in this repository are entirely written by me. I use AI tools to help structure, format, and polish my README documentation and the explanatory comments inside the code files.*
 # LeetCode Practice (C++)
 
 This is my personal repository where I am practicing C++ and solving LeetCode problems. I use this space to track my progress, learn how to write cleaner code, and understand basic runtime differences.
@@ -15,6 +15,8 @@ This is my personal repository where I am practicing C++ and solving LeetCode pr
     * `rooman-integer-optimized.cpp` - Faster solution using a `switch` statement instead of a map.
   * **remove-duplicates-from-sorted-array/**
     * `removeDuplicates.cpp` - Fast, memory-safe solution using the two-pointer approach.
+  * **merge-sorted-array/**
+    * `mergeSortedArray.cpp` - Optimal $O(m + n)$ solution that merges arrays from back to front without extra memory.
 
 ## Notes on What I Learned
 
@@ -30,7 +32,12 @@ This is my personal repository where I am practicing C++ and solving LeetCode pr
 * **The Logic:** I learned that using nested loops and trying to delete items with `.erase()` while looping is bad. It can crash the program because memory shifts under your pointers (iterator invalidation), and it is very slow.
 * **The Two-Pointer Approach:** Since the array is already sorted, duplicates sit right next to each other. I used an "Assistant" pointer to mark unique spots and a "Scanner" pointer to check ahead. We just overwrite duplicates in place, which makes it safe and runs in a fast $O(n)$ time with zero extra memory overhead.
 
+### 4. Merge Sorted Array
+* **First Attempt (Insert, Sort, and Erase):** I appended the second array to the end, sorted everything, and tried to erase elements from the front. This was bad because negative numbers sorted to the front and got deleted by accident, and erasing from the front forces elements to shift in memory, which is very slow.
+* **Second Attempt (Overwrite and Sort):** I fixed the bug by using the empty slots at index `m` to overwrite the zeros with the second array, then sorted it. It passes all test cases, but it wastes the fact that both arrays were *already* sorted, making the runtime slow ($O((m+n) \log(m+n))$).
+* **Third Attempt (Three-Pointer Strategy):** Instead of sorting from the front, I started from the very back where the empty slots are. By comparing the largest numbers of both arrays and placing them at the end first, I merged them safely in-place. This runs in ultra-fast $O(m+n)$ time with zero extra memory overhead ($O(1)$ space).
+
 ## My Setup
 * **Language:** C++
 * **IDE:** Visual Studio Code
-* **OS:** Windows (PowerShell & Git) -->
+* **OS:** Windows (PowerShell & Git)

@@ -1,4 +1,4 @@
-*Note: The code logic and problem-solving implementations in this repository are entirely written by me. I use AI tools to help structure, format, and polish my README documentation and the explanatory comments inside the code files.*
+<!-- *Note: The code logic and problem-solving implementations in this repository are entirely written by me. I use AI tools to help structure, format, and polish my README documentation and the explanatory comments inside the code files.* -->
 # LeetCode Practice (C++)
 
 This is my personal repository where I am practicing C++ and solving LeetCode problems. I use this space to track my progress, learn how to write cleaner code, and understand basic runtime differences.
@@ -17,6 +17,8 @@ This is my personal repository where I am practicing C++ and solving LeetCode pr
     * `removeDuplicates.cpp` - Fast, memory-safe solution using the two-pointer approach.
   * **merge-sorted-array/**
     * `mergeSortedArray.cpp` - Optimal $O(m + n)$ solution that merges arrays from back to front without extra memory.
+  * **valid-palindrome/**
+    * `validPalindrome.cpp` - Clean string processing solution utilizing built-in transformers and a middle-converging check.
 
 ## Notes on What I Learned
 
@@ -36,6 +38,9 @@ This is my personal repository where I am practicing C++ and solving LeetCode pr
 * **First Attempt (Insert, Sort, and Erase):** I appended the second array to the end, sorted everything, and tried to erase elements from the front. This was bad because negative numbers sorted to the front and got deleted by accident, and erasing from the front forces elements to shift in memory, which is very slow.
 * **Second Attempt (Overwrite and Sort):** I fixed the bug by using the empty slots at index `m` to overwrite the zeros with the second array, then sorted it. It passes all test cases, but it wastes the fact that both arrays were *already* sorted, making the runtime slow ($O((m+n) \log(m+n))$).
 * **Third Attempt (Three-Pointer Strategy):** Instead of sorting from the front, I started from the very back where the empty slots are. By comparing the largest numbers of both arrays and placing them at the end first, I merged them safely in-place. This runs in ultra-fast $O(m+n)$ time with zero extra memory overhead ($O(1)$ space).
+
+### 5. Valid Palindrome
+* **The String Formatting:** I learned how to prepare strings for evaluation by chaining `std::transform` with `::tolower` to handle case insensitivity. I also used the erase-remove idiom with `std::remove_if` and a custom lambda function `[](char c) { return !isalnum(c); }` to safely strip out all spaces, commas, and punctuation symbols.
 
 ## My Setup
 * **Language:** C++

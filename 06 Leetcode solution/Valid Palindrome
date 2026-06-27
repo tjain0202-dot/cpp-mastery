@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <algorithm> // REQUIRED: For transform() and remove_if()
+#include <cctype>    // REQUIRED: For tolower() and isalnum()
+using namespace std;
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        // === 1. LOWERCASE CONVERSION ===
+        // Converts every uppercase letter to lowercase in place
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        
+        // === 2. REMOVE NON-ALPHANUMERIC SYMBOLS ===
+        // remove_if moves all spaces, commas, and punctuation to the very end
+        // erase then chops those unwanted characters off the string completely
+        s.erase(remove_if(s.begin(), s.end(), [](char c) {
+            return !isalnum(c); // Returns true if the character is NOT a letter or number
+        }), s.end());
+        
+        // === 3. TWO-POINTER PALINDROME CHECK ===
+        int n = s.size();
+        for(int i = 0; i < n / 2; i++){
+            // Compare characters from start and end moving inwards
+            if(s[i] != s[n - i - 1]){ 
+                return false; // Found a mismatch! Not a palindrome.
+            }
+        }
+        
+        return true; // Made it through without any mismatches! It is a palindrome.
+    }
+};
+
+int main() {
+    Solution solver;
+
+    // Test Case: Standard palindrome phrase containing uppercase, spaces, and punctuation
+    string test_string = "A man, a plan, a canal: Panama!";
+    
+    cout << "Original String: " << test_string << "\n";
+
+    // Run the palindrome check function
+    if (solver.isPalindrome(test_string)) {
+        cout << "Result: Yes, it is a valid palindrome!\n";
+    } else {
+        cout << "Result: No, it is not a valid palindrome.\n";
+    }
+
+    return 0;
+}
